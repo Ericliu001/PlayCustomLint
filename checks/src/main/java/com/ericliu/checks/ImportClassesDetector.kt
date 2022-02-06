@@ -28,13 +28,18 @@ class ImportClassesDetector : Detector(), SourceCodeScanner {
 
 
         override fun visitImportStatement(statement: UImportStatement) {
+            if (hasViolatedCondition()) {
+                // Exit checks if the file has had more than 2 import view statements.
+                return
+            }
+
             val resolved = statement.resolve()
             if (resolved is PsiClass) {
                 val qualifiedName = (resolved as PsiClass).qualifiedName ?: ""
                 if (qualifiedName.contains("android.view.")) {
                     viewImports.add(qualifiedName)
 
-                    if (viewImports.count() >= 3) {
+                    if (hasViolatedCondition()) {
                         context.report(
                             ISSUE,
                             context.getLocation(statement),
@@ -44,7 +49,10 @@ class ImportClassesDetector : Detector(), SourceCodeScanner {
 
                 }
             }
+        }
 
+        private fun hasViolatedCondition(): Boolean {
+            return viewImports.count() >= 2
         }
     }
 
