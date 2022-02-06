@@ -7,15 +7,18 @@ import org.jetbrains.uast.UElement
 import org.jetbrains.uast.UFile
 import org.jetbrains.uast.UImportStatement
 
+/**
+ * Detect classes that import more than 2 view classes.
+ */
 class ImportClassesDetector : Detector(), SourceCodeScanner {
-    override fun getApplicableUastTypes(): List<Class<out UElement>>? {
+    override fun getApplicableUastTypes(): List<Class<out UElement>> {
         return listOf(
             UFile::class.java,
             UImportStatement::class.java
         )
     }
 
-    override fun createUastHandler(context: JavaContext): UElementHandler? {
+    override fun createUastHandler(context: JavaContext): UElementHandler {
         return ImportVisitor(context)
     }
 
@@ -23,6 +26,7 @@ class ImportClassesDetector : Detector(), SourceCodeScanner {
         private val viewImports = mutableListOf<String>()
 
         override fun visitFile(node: UFile) {
+            // At the start of each file, clear the import lists.
             viewImports.clear()
         }
 
