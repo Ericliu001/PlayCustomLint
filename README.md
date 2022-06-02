@@ -1,1 +1,4 @@
 # PlayCustomLint
+
+
+`./gradlew lint`

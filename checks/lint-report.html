@@ -174,16 +174,17 @@ document.getElementById(id).style.display = 'none';
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
   <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
-      <span class="mdl-layout-title">Lint Report: 1 warning</span>
+      <span class="mdl-layout-title">Lint Report: 5 warnings</span>
       <div class="mdl-layout-spacer"></div>
       <nav class="mdl-navigation mdl-layout--large-screen-only">
-Check performed at Sat Feb 05 22:08:19 PST 2022      </nav>
+Check performed at Thu Jun 02 08:36:40 PDT 2022      </nav>
     </div>
   </header>
   <div class="mdl-layout__drawer">
     <span class="mdl-layout-title">Issue Types</span>
     <nav class="mdl-navigation">
       <a class="mdl-navigation__link" href="#overview"><i class="material-icons">dashboard</i>Overview</a>
+      <a class="mdl-navigation__link" href="#GradleDependency"><i class="material-icons warning-icon">warning</i>Obsolete Gradle Dependency (4)</a>
       <a class="mdl-navigation__link" href="#LintImplTextFormat"><i class="material-icons warning-icon">warning</i>Lint Text Format (1)</a>
     </nav>
   </div>
@@ -197,6 +198,11 @@ Check performed at Sat Feb 05 22:08:19 PST 2022      </nav>
   </div>
               <div class="mdl-card__supporting-text">
 <table class="overview">
+<tr><td class="countColumn"></td><td class="categoryColumn"><a href="#Correctness">Correctness</a>
+</td></tr>
+<tr>
+<td class="countColumn">4</td><td class="issueColumn"><i class="material-icons warning-icon">warning</i>
+<a href="#GradleDependency">GradleDependency</a>: Obsolete Gradle Dependency</td></tr>
 <tr><td class="countColumn"></td><td class="categoryColumn"><a href="#Lint Implementation Issues">Lint Implementation Issues</a>
 </td></tr>
 <tr>
@@ -210,6 +216,77 @@ Check performed at Sat Feb 05 22:08:19 PST 2022      </nav>
 Dismiss</button>            </div>
             </div>
           </section>
+<a name="Correctness"></a>
+<a name="GradleDependency"></a>
+<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" id="GradleDependencyCard" style="display: block;">
+            <div class="mdl-card mdl-cell mdl-cell--12-col">
+  <div class="mdl-card__title">
+    <h2 class="mdl-card__title-text">Obsolete Gradle Dependency</h2>
+  </div>
+              <div class="mdl-card__supporting-text">
+<div class="issue">
+<div class="warningslist">
+<span class="location"><a href="../../build.gradle">build.gradle</a>:30</span>: <span class="message">A newer version of com.android.tools.lint:lint-api than 30.1.1 is available: 30.2.1</span><br /><pre class="errorlines">
+<span class="lineno"> 27 </span>
+<span class="lineno"> 28 </span>dependencies {
+<span class="lineno"> 29 </span>    <span class="comment">// For a description of the below dependencies, see the main project README</span>
+<span class="caretline"><span class="lineno"> 30 </span>    compileOnly <span class="warning"><span class="string">"com.android.tools.lint:lint-api:$lintVersion"</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 31 </span>    <span class="comment">// You typically don't need this one:</span>
+<span class="lineno"> 32 </span>    compileOnly <span class="string">"com.android.tools.lint:lint-checks:$lintVersion"</span>
+<span class="lineno"> 33 </span><span class="comment">//    compileOnly "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"</span></pre>
+
+<span class="location"><a href="../../build.gradle">build.gradle</a>:32</span>: <span class="message">A newer version of com.android.tools.lint:lint-checks than 30.1.1 is available: 30.2.1</span><br /><pre class="errorlines">
+<span class="lineno"> 29 </span>    <span class="comment">// For a description of the below dependencies, see the main project README</span>
+<span class="lineno"> 30 </span>    compileOnly <span class="string">"com.android.tools.lint:lint-api:$lintVersion"</span>
+<span class="lineno"> 31 </span>    <span class="comment">// You typically don't need this one:</span>
+<span class="caretline"><span class="lineno"> 32 </span>    compileOnly <span class="warning"><span class="string">"com.android.tools.lint:lint-checks:$lintVersion"</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 33 </span><span class="comment">//    compileOnly "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"</span>
+<span class="lineno"> 34 </span>
+<span class="lineno"> 35 </span>    testImplementation <span class="string">"junit:junit:4.13.2"</span></pre>
+
+<span class="location"><a href="../../build.gradle">build.gradle</a>:36</span>: <span class="message">A newer version of com.android.tools.lint:lint than 30.1.1 is available: 30.2.1</span><br /><pre class="errorlines">
+<span class="lineno"> 33 </span><span class="comment">//    compileOnly "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"</span>
+<span class="lineno"> 34 </span>
+<span class="lineno"> 35 </span>    testImplementation <span class="string">"junit:junit:4.13.2"</span>
+<span class="caretline"><span class="lineno"> 36 </span>    testImplementation <span class="warning"><span class="string">"com.android.tools.lint:lint:$lintVersion"</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 37 </span>    testImplementation <span class="string">"com.android.tools.lint:lint-tests:$lintVersion"</span>
+<span class="lineno"> 38 </span>}</pre>
+
+<span class="location"><a href="../../build.gradle">build.gradle</a>:37</span>: <span class="message">A newer version of com.android.tools.lint:lint-tests than 30.1.1 is available: 30.2.1</span><br /><pre class="errorlines">
+<span class="lineno"> 34 </span>
+<span class="lineno"> 35 </span>    testImplementation <span class="string">"junit:junit:4.13.2"</span>
+<span class="lineno"> 36 </span>    testImplementation <span class="string">"com.android.tools.lint:lint:$lintVersion"</span>
+<span class="caretline"><span class="lineno"> 37 </span>    testImplementation <span class="warning"><span class="string">"com.android.tools.lint:lint-tests:$lintVersion"</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 38 </span>}</pre>
+
+</div>
+<div class="metadata"><div class="explanation" id="explanationGradleDependency" style="display: none;">
+This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find.<br/>Note: This issue has an associated quickfix operation in Android Studio and IntelliJ IDEA.<br>
+To suppress this error, use the issue id "GradleDependency" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+<br/></div>
+</div>
+</div>
+<div class="chips">
+<span class="mdl-chip">
+    <span class="mdl-chip__text">GradleDependency</span>
+</span>
+<span class="mdl-chip">
+    <span class="mdl-chip__text">Correctness</span>
+</span>
+<span class="mdl-chip">
+    <span class="mdl-chip__text">Warning</span>
+</span>
+<span class="mdl-chip">
+    <span class="mdl-chip__text">Priority 4/10</span>
+</span>
+</div>
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+<button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="explanationGradleDependencyLink" onclick="reveal('explanationGradleDependency');">
+Explain</button><button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="GradleDependencyCardLink" onclick="hideid('GradleDependencyCard');">
+Dismiss</button>            </div>
+            </div>
+          </section>
 <a name="Lint Implementation Issues"></a>
 <a name="LintImplTextFormat"></a>
 <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" id="LintImplTextFormatCard" style="display: block;">
@@ -220,14 +297,14 @@ Dismiss</button>            </div>
               <div class="mdl-card__supporting-text">
 <div class="issue">
 <div class="warningslist">
-<span class="location"><a href="../../src/main/java/com/ericliu/checks/ImportClassesDetector.kt">src/main/java/com/ericliu/checks/ImportClassesDetector.kt</a>:63</span>: <span class="message">The issue summary should <i>not</i> end with a period (think of it as a headline)</span><br /><pre class="errorlines">
-<span class="lineno"> 60 </span>  <span class="annotation">@JvmField</span>
-<span class="lineno"> 61 </span>  <span class="keyword">val</span> ISSUE: Issue = Issue.create(
-<span class="lineno"> 62 </span>      id = <span class="string">"EricLiu"</span>,
-<span class="caretline"><span class="lineno"> 63 </span>      briefDescription = <span class="string">"</span><span class="warning"><span class="string">I don't like this import.</span></span><span class="string">"</span>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<span class="lineno"> 64 </span>      explanation = <span class="string">"""
-</span><span class="lineno"> 65 </span><span class="string">          This check goes through import statements and find the imports that I don't like.
-</span><span class="lineno"> 66 </span><span class="string">      """</span>,
+<span class="location"><a href="../../src/main/kotlin/com/ericliu/checks/ImportClassesDetector.kt">src/main/kotlin/com/ericliu/checks/ImportClassesDetector.kt</a>:67</span>: <span class="message">The issue summary should <i>not</i> end with a period (think of it as a headline)</span><br /><pre class="errorlines">
+<span class="lineno"> 64 </span>  <span class="annotation">@JvmField</span>
+<span class="lineno"> 65 </span>  <span class="keyword">val</span> ISSUE: Issue = Issue.create(
+<span class="lineno"> 66 </span>      id = <span class="string">"EricLiu"</span>,
+<span class="caretline"><span class="lineno"> 67 </span>      briefDescription = <span class="string">"</span><span class="warning"><span class="string">I don't like this import.</span></span><span class="string">"</span>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 68 </span>      explanation = <span class="string">"""
+</span><span class="lineno"> 69 </span><span class="string">          This check goes through import statements and find the imports that I don't like.
+</span><span class="lineno"> 70 </span><span class="string">      """</span>,
 </pre>
 
 </div>
