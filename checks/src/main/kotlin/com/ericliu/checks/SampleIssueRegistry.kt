@@ -26,7 +26,8 @@ import com.android.tools.lint.detector.api.CURRENT_API
 class SampleIssueRegistry : IssueRegistry() {
     override val issues = listOf(
         SampleCodeDetector.ISSUE,
-        ImportClassesDetector.ISSUE
+        ImportClassesDetector.ISSUE,
+        CompanionObjectDetector.ISSUE,
     )
 
     override val api: Int

@@ -63,7 +63,7 @@ class ImportClassesDetector : Detector(), SourceCodeScanner {
     companion object {
         @JvmField
         val ISSUE: Issue = Issue.create(
-            id = "EricLiu",
+            id = "ImportTooManyViews",
             briefDescription = "I don't like this import.",
             explanation = """
                 This check goes through import statements and find the imports that I don't like.
