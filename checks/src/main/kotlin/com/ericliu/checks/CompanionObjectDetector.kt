@@ -30,7 +30,7 @@ class CompanionObjectDetector : Detector(), SourceCodeScanner {
             }
 
             override fun visitFile(node: UFile) {
-
+                /* no-op */
             }
         }
     }
